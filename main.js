@@ -96,7 +96,7 @@ posts.forEach(currentPost => {
     <div class="post__header">
         <div class="post-meta">                    
             <div class="post-meta__icon">
-                <img class="profile-pic" src="${currentPost.author.image}" alt="Phil Mangione">                    
+                <img class="profile-pic" src="${currentPost.author.image}" alt="${currentPost.author.image}">                    
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${currentPost.author.name}</div>
@@ -111,7 +111,7 @@ posts.forEach(currentPost => {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button" href="#" data-postid="${currentPost.id}">
+                <a class="like-button" data-postid="${currentPost.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -143,4 +143,23 @@ buttonList.forEach((button, index) => {
         likesCounterArray.push(posts[index].id);
         console.log(likesCounterArray);
     })
+})
+
+
+// -Formattare le date in formato italiano (gg/mm/aaaa)
+const dateArray = document.querySelectorAll(".post-meta__time");
+const formattedDateArray = [];
+
+dateArray.forEach((date, index) => {
+    
+    date = dateArray[index].innerText;
+    console.log(date);
+    date = date.split("-");
+    console.log(date)
+    date = date[1] + "/" + date[0] + "/" + date[2];
+    console.log(date)
+    formattedDateArray.push(date);
+    console.log(formattedDateArray)
+
+    dateArray[index].innerText = formattedDateArray[index];
 })
