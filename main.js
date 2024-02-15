@@ -82,6 +82,8 @@ const posts = [
     }
 ];
 
+console.log(posts);
+
 // elemento html in cui inserirò i post
 const postsListElement = document.querySelector(".posts-list");
 console.log(postsListElement);
@@ -109,13 +111,13 @@ posts.forEach(currentPost => {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button" href="#" data-postid="${currentPost.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">${currentPost.likes}</b> persone
+                Piace a <b id="like-counter-${currentPost.id}" class="js-likes-counter">${currentPost.likes}</b> persone
             </div>
         </div> 
     </div>            
@@ -123,4 +125,22 @@ posts.forEach(currentPost => {
     `;
 })
 
+// creo un array contenente i button per mettere like e aggiungo ad ognuno l'addeventlister
+const buttonList = document.querySelectorAll(".like-button");
+console.log(buttonList);
 
+// creo array vuoto dove salverò id dei button cliccati
+let likesCounterArray = [];
+
+// forEach button
+buttonList.forEach((button, index) => {
+
+    // aggiungo addeventlistener
+    button.addEventListener('click', function (){
+        const likeCounterElement = document.querySelector(`#like-counter-${index + 1}`);
+        likeCounterElement.innerText = posts[index].likes + 1;
+        button.classList.add("like-button--liked");
+        likesCounterArray.push(posts[index].id);
+        console.log(likesCounterArray);
+    })
+})
