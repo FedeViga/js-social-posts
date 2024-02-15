@@ -1,3 +1,29 @@
+/*
+-Milestone 1 - Creiamo il nostro array di oggetti che rappresentano ciascun post. Ogni post dovrà avere le informazioni necessarie per stampare la relativa card:
+    -id del post, numero progressivo da 1 a n
+    -nome autore,
+    -foto autore,
+    -data in formato americano (mm-gg-yyyy),
+    -testo del post,
+    -immagine (non tutti i post devono avere una immagine),
+    -numero di likes.
+Non è necessario creare date casuali 
+Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es. Unsplash (https://unsplash.it/300/300?image=<id>)
+
+-Milestone 2 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+
+-Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
+
+-BONUS
+
+    -Formattare le date in formato italiano (gg/mm/aaaa)
+
+    -Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
+
+    -Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
+*/
+
+
 const posts = [
     {
         "id": 1,
@@ -8,7 +34,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=15"
         },
         "likes": 80,
-        "created": "2021-06-25"
+        "created": "06-25-2023"
     },
     {
         "id": 2,
@@ -19,7 +45,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=10"
         },
         "likes": 120,
-        "created": "2021-09-03"
+        "created": "09-03-2023"
     },
     {
         "id": 3,
@@ -30,7 +56,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 78,
-        "created": "2021-05-15"
+        "created": "05-15-2023"
     },
     {
         "id": 4,
@@ -41,7 +67,7 @@ const posts = [
             "image": null
         },
         "likes": 56,
-        "created": "2021-04-03"
+        "created": "04-03-2023"
     },
     {
         "id": 5,
@@ -52,6 +78,6 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=29"
         },
         "likes": 95,
-        "created": "2021-03-05"
+        "created": "03-05-2023"
     }
 ];
