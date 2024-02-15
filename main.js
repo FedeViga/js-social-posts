@@ -42,7 +42,7 @@ const posts = [
         "media": "",
         "author": {
             "name": "Sofia Perlari",
-            "image": "https://unsplash.it/300/300?image=10"
+            "image": null
         },
         "likes": 120,
         "created": "09-03-2023"
@@ -64,7 +64,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": " "
+            "image": null
         },
         "likes": 56,
         "created": "04-03-2023"
@@ -175,12 +175,14 @@ console.log("array immagini", imageArray);
 posts.forEach((image, index) => {
     image = imageArray[index];
     console.log(image);
-    if(image.src == " ") {
+    if(!posts[index].author.image) {
         const initialsArray = posts[index].author.name.split(" ");
         console.log(initialsArray)
         for (let i = 0; i < initialsArray.length; i++) {
             initialsArray[i] = initialsArray[i][0].toUpperCase();
         }
-        console.log("iniziali", initialsArray)
+        const initials = initialsArray.join('')
+        console.log(initials)
+        metaIconArray[index].innerHTML = "<h2>" + initials + "<h2>";
     }
 })
