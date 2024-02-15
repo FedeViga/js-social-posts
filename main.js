@@ -64,7 +64,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": "",
+            "image": " "
         },
         "likes": 56,
         "created": "04-03-2023"
@@ -123,6 +123,8 @@ posts.forEach(currentPost => {
     </div>            
 </div>
     `;
+
+    
 })
 
 // creo un array contenente i button per mettere like e aggiungo ad ognuno l'addeventlister
@@ -137,11 +139,15 @@ buttonList.forEach((button, index) => {
 
     // aggiungo addeventlistener
     button.addEventListener('click', function (){
+        button.classList.toggle("like-button--liked");
         const likeCounterElement = document.querySelector(`#like-counter-${index + 1}`);
-        likeCounterElement.innerText = posts[index].likes + 1;
-        button.classList.add("like-button--liked");
-        likesCounterArray.push(posts[index].id);
-        console.log(likesCounterArray);
+        if (likeCounterElement.innerText == posts[index].likes + 1) {
+            likeCounterElement.innerText = posts[index].likes;
+        } else {
+
+            likeCounterElement.innerText = posts[index].likes + 1;
+            likesCounterArray.push(posts[index].id);
+        }
     })
 })
 
@@ -153,13 +159,28 @@ const formattedDateArray = [];
 dateArray.forEach((date, index) => {
     
     date = dateArray[index].innerText;
-    console.log(date);
     date = date.split("-");
-    console.log(date)
     date = date[1] + "/" + date[0] + "/" + date[2];
-    console.log(date)
     formattedDateArray.push(date);
-    console.log(formattedDateArray)
 
     dateArray[index].innerText = formattedDateArray[index];
+})
+
+
+// elemento di fallback con iniziali utente se non c'è l'immagine del profilo
+const metaIconArray = document.querySelectorAll(".post-meta__icon");
+const imageArray = document.querySelectorAll(".profile-pic");
+console.log("array immagini", imageArray);
+
+posts.forEach((image, index) => {
+    image = imageArray[index];
+    console.log(image);
+    if(image.src == " ") {
+        const initialsArray = posts[index].author.name.split(" ");
+        console.log(initialsArray)
+        for (let i = 0; i < initialsArray.length; i++) {
+            initialsArray[i] = initialsArray[i][0].toUpperCase();
+        }
+        console.log("iniziali", initialsArray)
+    }
 })
