@@ -39,7 +39,7 @@ const posts = [
     {
         "id": 2,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=112",
+        "media": "",
         "author": {
             "name": "Sofia Perlari",
             "image": "https://unsplash.it/300/300?image=10"
@@ -64,7 +64,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "",
         },
         "likes": 56,
         "created": "04-03-2023"
@@ -81,3 +81,46 @@ const posts = [
         "created": "03-05-2023"
     }
 ];
+
+// elemento html in cui inserirò i post
+const postsListElement = document.querySelector(".posts-list");
+console.log(postsListElement);
+
+// forEach per inserire in pagina i post con le informazioni contenute nell'array di oggetti
+posts.forEach(currentPost => {
+
+    postsListElement.innerHTML += `
+    <div class="post">
+    <div class="post__header">
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src="${currentPost.author.image}" alt="Phil Mangione">                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${currentPost.author.name}</div>
+                <div class="post-meta__time">${currentPost.created}</div>
+            </div>                    
+        </div>
+    </div>
+    <div class="post__text">${currentPost.content}</div>
+    <div class="post__image">
+        <img src="${currentPost.media}" alt="">
+    </div>
+    <div class="post__footer">
+        <div class="likes js-likes">
+            <div class="likes__cta">
+                <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="like-button__label">Mi Piace</span>
+                </a>
+            </div>
+            <div class="likes__counter">
+                Piace a <b id="like-counter-1" class="js-likes-counter">${currentPost.likes}</b> persone
+            </div>
+        </div> 
+    </div>            
+</div>
+    `;
+})
+
+
